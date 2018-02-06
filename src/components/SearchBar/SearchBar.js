@@ -10,6 +10,7 @@ export class SearchBar extends React.Component {
 
   onUserSearch(username) {
     this.props.searchGithubUser(username)
+    this.props.searchGithubUserStarredRepos(username)
   }
 
   render() {

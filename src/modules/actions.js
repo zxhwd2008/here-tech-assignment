@@ -5,6 +5,7 @@ export const ActionType = keyMirror({
     UPDATE_FIELD: null,
   },
   GITHUBMANAGER: {
+    FETCH_USER: null,
     FETCH_USER_STARRED_REPOS: null,
     UPDATE_FIELD: null,
   },

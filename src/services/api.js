@@ -9,7 +9,7 @@ function callApi(endpoint, data = null, method = 'GET', showSpinner) {
     method,
     mode: 'cors',
     headers: {
-      Accept: 'application/json',
+      Accept: 'application/vnd.github.v3+json',
       'Content-Type': 'application/json;charset=UTF-8',
     },
   }

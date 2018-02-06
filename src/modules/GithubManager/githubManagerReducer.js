@@ -8,6 +8,13 @@ export const githubManagerReducer = createReducer(GithubManager.create(), {
 })
 
 export const searchGithubUser = (user) => ({
+  type: ActionType.GITHUBMANAGER.FETCH_USER,
+  payload: {
+    user,
+  },
+})
+
+export const searchGithubUserStarredRepos = (user) => ({
   type: ActionType.GITHUBMANAGER.FETCH_USER_STARRED_REPOS,
   payload: {
     user,
