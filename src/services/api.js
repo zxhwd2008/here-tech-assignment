@@ -1,7 +1,7 @@
 import 'isomorphic-fetch'
-import { constants } from './constants'
 import { updateField } from 'modules/Root'
 import { store } from 'index.js'
+import { constants } from './constants'
 
 function callApi(endpoint, data = null, method = 'GET', showSpinner) {
   const fullUrl = (endpoint.indexOf('http://') && endpoint.indexOf('https://') === -1) ? constants.API_ROOT + endpoint : endpoint
@@ -25,17 +25,24 @@ function callApi(endpoint, data = null, method = 'GET', showSpinner) {
   return fetch(fullUrl, config)
   .then(response => {
     store.dispatch(updateField('fetching', false))
-    return response.json().then(json => ({ json, response }))
+    return response.json().then(json => ({ json, response, headers: response.headers }))
   })
-  .then(({ json, response }) => !response.ok ? Promise.reject(json) : json)
+  .then(({ json, response, headers }) => (!response.ok ? Promise.reject(json) : { json, headers }))
   .then(
-    response => ({ response }),
+    ({ json, headers }) => ({ response: json, headers }),
     error => ({ error: error.message || 'Something bad happened' })
   )
 }
 
 // api services
-export const get = (resource, showSpinner = true) => callApi(`/${resource}`, null, 'GET', showSpinner)
-export const post = (resource, data, showSpinner = true) => callApi(`/${resource}`, data, 'POST', showSpinner)
-export const del = (resource, data, showSpinner = true) => callApi(`/${resource}`, data, 'DELETE', showSpinner)
-export const put = (resource, data, showSpinner = true) => callApi(`/${resource}`, data, 'PUT', showSpinner)
+export const get = (resource, showSpinner = true) =>
+callApi(`/${resource}`, null, 'GET', showSpinner)
+
+export const post = (resource, data, showSpinner = true) =>
+callApi(`/${resource}`, data, 'POST', showSpinner)
+
+export const del = (resource, data, showSpinner = true) =>
+callApi(`/${resource}`, data, 'DELETE', showSpinner)
+
+export const put = (resource, data, showSpinner = true) =>
+callApi(`/${resource}`, data, 'PUT', showSpinner)
