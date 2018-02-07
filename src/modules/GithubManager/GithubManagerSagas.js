@@ -5,6 +5,10 @@ import { parseGithubLink } from 'modules/utils/parseGithubLink'
 import { ActionType } from 'modules/actions'
 import { GithubManager, updateField } from './index'
 
+message.config({
+  duration: 1
+})
+
 function* fetchGithubData(url, showError = false) {
   const result = yield call(Api.get, url)
   if (!result.error) {
