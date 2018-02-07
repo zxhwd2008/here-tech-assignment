@@ -81,4 +81,10 @@ module.exports = {
   postcss: [
     require('autoprefixer'),
   ],
+  externals: {
+    'cheerio': 'window',
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
 }

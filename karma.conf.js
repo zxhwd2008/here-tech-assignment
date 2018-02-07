@@ -3,15 +3,14 @@ webpackConfig.devtool = 'inline-source-map'
 
 module.exports = function (config) {
   config.set({
-    browsers: [ 'PhantomJS' ],
+    browsers: [ 'Chrome' ],
     // karma only needs to know about the test bundle
     files: [
       'src/test/tests.bundle.js'
     ],
     frameworks: [ 'chai', 'mocha', 'sinon' ],
     plugins: [
-      'karma-nyan-reporter',
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-chai',
       'karma-mocha',
       'karma-sinon',
@@ -22,10 +21,7 @@ module.exports = function (config) {
     preprocessors: {
       'src/test/tests.bundle.js': [ 'webpack', 'sourcemap' ],
     },
-    reporters: ['nyan'],
-    nyanReporter: {
-      suppressErrorHighlighting: true,
-    },
+    reporters: ['dots'],
     // webpack config object
     webpack: webpackConfig,
     webpackMiddleware: {
