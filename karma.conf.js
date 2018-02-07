@@ -10,6 +10,7 @@ module.exports = function (config) {
     ],
     frameworks: [ 'chai', 'mocha', 'sinon' ],
     plugins: [
+      'karma-nyan-reporter',
       'karma-phantomjs-launcher',
       'karma-chai',
       'karma-mocha',
@@ -21,8 +22,10 @@ module.exports = function (config) {
     preprocessors: {
       'src/test/tests.bundle.js': [ 'webpack', 'sourcemap' ],
     },
-    reporters: [ 'dots' ],
-    singleRun: true,
+    reporters: ['nyan'],
+    nyanReporter: {
+      suppressErrorHighlighting: true,
+    },
     // webpack config object
     webpack: webpackConfig,
     webpackMiddleware: {
