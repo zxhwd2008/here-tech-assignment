@@ -6,7 +6,7 @@ import { ActionType } from 'modules/actions'
 import { GithubManager, updateField } from './index'
 
 message.config({
-  duration: 1
+  duration: 1,
 })
 
 function* fetchGithubData(url, showError = false) {
