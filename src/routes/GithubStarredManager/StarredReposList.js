@@ -8,6 +8,11 @@ import { Filters } from './Filters'
 import styles from './starred-repos-list.less'
 
 export class StarredReposList extends React.Component {
+  componentDidMount() {
+    const { updateField } = this.props
+    updateField('repository', null)
+  }
+
   componentDidUpdate() {
     window.scrollTo(0, 0)
   }
