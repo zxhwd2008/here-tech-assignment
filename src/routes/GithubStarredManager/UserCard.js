@@ -7,14 +7,14 @@ const { Meta } = Card
 export const UserCard = ({ user }) => (
   user ?
   (
-    <Card cover={ <img src={ user.avatar_url } /> }>
+    <Card cover={<img src={user.avatar_url} alt="user" />}>
       <Meta
-        title={ user.name }
-        description={ user.bio }
+        title={user.name}
+        description={user.bio}
       />
     </Card>
   )
-  : (<div></div>)
+  : (<div />)
 )
 
 UserCard.propTypes = {

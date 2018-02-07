@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { ReposDetails } from 'routes/ReposDetails'
 import {
-  searchGithubUserStarredRepos,
+  searchGithubRepos,
   GithubManager as GithubManagerState,
 } from 'modules/GithubManager'
 

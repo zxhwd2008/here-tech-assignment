@@ -30,8 +30,8 @@ export const searchGithubRepos = (repos) => ({
 })
 
 export const searchGithubUserStarredRepos = (user) => ({
-    type: ActionType.GITHUBMANAGER.FETCH_USER_STARRED_REPOS,
-    payload: {
-      user,
-    },
-  })
+  type: ActionType.GITHUBMANAGER.FETCH_USER_STARRED_REPOS,
+  payload: {
+    user,
+  },
+})

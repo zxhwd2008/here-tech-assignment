@@ -27,6 +27,7 @@ export class SearchBar extends React.Component {
 }
 
 SearchBar.propTypes = {
+  updateField: PropTypes.func,
   searchGithubUser: PropTypes.func,
   searchGithubUserStarredRepos: PropTypes.func,
 }

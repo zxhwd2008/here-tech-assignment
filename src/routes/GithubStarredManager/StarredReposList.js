@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, List, Avatar, Icon } from 'antd'
+import { Row, Col, List, Icon } from 'antd'
 import PropTypes from 'prop-types'
 import { UserCard } from './UserCard'
 import { Filters } from './Filters'
@@ -13,19 +13,19 @@ export class StarredReposList extends React.Component {
   render() {
     const { user, totalStarredRepos,
       starredRepos, sort, page,
-      updateField, searchGithubUserStarredRepos} = this.props
+      updateField, searchGithubUserStarredRepos } = this.props
 
-    if ( user === null || totalStarredRepos === null ||
+    if (user === null || totalStarredRepos === null ||
     starredRepos === null) {
-      return (<div></div>)
+      return (<div />)
     }
 
     const pagination = {
       pageSize: 30,
       current: page,
       total: totalStarredRepos,
-      onChange: ( page ) => {
-        updateField('page', page)
+      onChange: (newPage) => {
+        updateField('page', newPage)
         searchGithubUserStarredRepos(user.login)
       },
     }
@@ -37,38 +37,40 @@ export class StarredReposList extends React.Component {
       </span>
     )
 
-    return(
+    return (
       <Row gutter={24} className={styles['starred-repos-list-wrapper']}>
         <Col xs={24} sm={10} md={8}>
           <UserCard user={user} />
         </Col>
         <Col xs={24} sm={14} md={16}>
           <div className={styles['filters-wrapper']}>
-            <Filters sort={sort}
+            <Filters
+              sort={sort}
               user={user}
               searchGithubUserStarredRepos={searchGithubUserStarredRepos}
-              updateField={updateField} />
+              updateField={updateField}
+            />
           </div>
           <List
-              itemLayout="vertical"
-              size="large"
-              pagination={pagination}
-              dataSource={starredRepos}
-              renderItem={item => (
-                <List.Item
-                  key={item.full_name}
-                  actions={[
-                    <IconText type="info-circle" text={item.language || 'no info'} />,
-                    <IconText type="star" text={item.stargazers_count} />,
-                    <IconText type="fork" text={item.forks_count} />]}
-                >
-                  <List.Item.Meta
-                    title={<a>{item.full_name}</a>}
-                    description={item.description}
-                  />
-                </List.Item>
-              )}
-            />
+            itemLayout="vertical"
+            size="large"
+            pagination={pagination}
+            dataSource={starredRepos}
+            renderItem={item => (
+              <List.Item
+                key={item.full_name}
+                actions={[
+                  <IconText type="info-circle" text={item.language || 'no info'} />,
+                  <IconText type="star" text={item.stargazers_count} />,
+                  <IconText type="fork" text={item.forks_count} />]}
+              >
+                <List.Item.Meta
+                  title={<a>{item.full_name}</a>}
+                  description={item.description}
+                />
+              </List.Item>
+            )}
+          />
         </Col>
       </Row>
     )
@@ -77,6 +79,8 @@ export class StarredReposList extends React.Component {
 
 StarredReposList.propTypes = {
   user: PropTypes.object,
+  updateField: PropTypes.func,
+  searchGithubUserStarredRepos: PropTypes.func,
   totalStarredRepos: PropTypes.number,
   starredRepos: PropTypes.array,
   page: PropTypes.number,
