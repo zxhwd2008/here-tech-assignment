@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 /* eslint-disable max-len */
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'inline-source-map', // just do inline source maps instead of the default
   resolve: {
     root: [
       path.resolve('./src')
@@ -39,6 +39,10 @@ module.exports = {
 
   module: {
     loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
       {
         test: /\.js$/,
         loader: 'babel',
@@ -81,10 +85,4 @@ module.exports = {
   postcss: [
     require('autoprefixer'),
   ],
-  externals: {
-    'cheerio': 'window',
-    'react/addons': true,
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
-  },
 }

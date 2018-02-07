@@ -1,5 +1,4 @@
 var webpackConfig = require('./webpack.config.dev.js')
-webpackConfig.devtool = 'inline-source-map'
 
 module.exports = function (config) {
   config.set({
