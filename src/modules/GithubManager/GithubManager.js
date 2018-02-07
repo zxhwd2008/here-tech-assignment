@@ -5,6 +5,9 @@ export const GithubManager = createState({
   fields: {
     totalStarredRepos: null,
     user: null,
+    repository: null,
     starredRepos: null,
+    page: 1,
+    sort: 'created',
   },
 })

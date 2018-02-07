@@ -1,9 +1,9 @@
-import { takeEvery, call, all, put } from 'redux-saga/effects'
+import { takeEvery, call, all, put, select } from 'redux-saga/effects'
 import { message } from 'antd'
 import { Api } from 'services'
 import { parseGithubLink } from 'modules/utils/parseGithubLink'
 import { ActionType } from 'modules/actions'
-import { updateField } from './index'
+import { GithubManager, updateField } from './index'
 
 function* fetchGithubData(url, showError = false) {
   const result = yield call(Api.get, url)
@@ -17,7 +17,15 @@ function* fetchGithubData(url, showError = false) {
 }
 
 function* fetchUserStarredSideEffects(action) {
-  const { user, page, sort } = action.payload
+  const { user } = action.payload
+
+  const page = yield select(state =>
+    GithubManager.page()(state)
+  )
+
+  const sort = yield select(state =>
+    GithubManager.sort()(state)
+  )
 
   const [totalData, starredReposData] = yield all([
     yield call(fetchGithubData, 'users/' + user + '/starred?per_page=1'),

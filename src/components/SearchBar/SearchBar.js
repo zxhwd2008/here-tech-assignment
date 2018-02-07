@@ -10,6 +10,8 @@ export class SearchBar extends React.Component {
   }
 
   onUserSearch(username) {
+    this.props.updateField('page', 1)
+    this.props.updateField('sort', 'created')
     this.props.searchGithubUser(username)
     this.props.searchGithubUserStarredRepos(username)
   }

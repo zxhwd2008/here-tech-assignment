@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import { LocaleProvider, Spin, Layout } from 'antd'
 import enUS from 'antd/lib/locale-provider/en_US'
 import { Header } from '../components/Header'
@@ -8,7 +9,7 @@ import styles from './root.less'
 export const Root = (props) =>
   <LocaleProvider locale={enUS}>
     <Spin size="large" spinning={props.fetching} >
-      <Layout className="layout">
+      <Layout className={classnames('layout', styles.container)}>
         <Layout.Header className={styles['header-wrapper']}>
           <Header />
         </Layout.Header>

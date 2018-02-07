@@ -22,13 +22,16 @@ export const searchGithubUser = (user) => ({
   },
 })
 
-export const searchGithubUserStarredRepos = (user, page = 1,
-  sort = 'created', direction = 'desc') => ({
+export const searchGithubRepos = (repos) => ({
+  type: ActionType.GITHUBMANAGER.FETCH_REPOSITORY,
+  payload: {
+    repos,
+  },
+})
+
+export const searchGithubUserStarredRepos = (user) => ({
     type: ActionType.GITHUBMANAGER.FETCH_USER_STARRED_REPOS,
     payload: {
       user,
-      page,
-      sort,
-      direction,
     },
   })
