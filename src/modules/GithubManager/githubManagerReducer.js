@@ -22,9 +22,10 @@ export const searchGithubUser = (user) => ({
   },
 })
 
-export const searchGithubRepos = (repos) => ({
+export const searchGithubRepos = (user, repos) => ({
   type: ActionType.GITHUBMANAGER.FETCH_REPOSITORY,
   payload: {
+    user,
     repos,
   },
 })

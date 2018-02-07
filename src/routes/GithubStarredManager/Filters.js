@@ -1,7 +1,6 @@
 import React from 'react'
 import { Select } from 'antd'
 import PropTypes from 'prop-types'
-import styles from './starred-repos-list.less'
 
 const Option = Select.Option
 
@@ -20,7 +19,7 @@ export class Filters extends React.Component {
   render() {
     const { sort } = this.props
     return (
-      <Select value={sort} onChange={this.handleChange}>
+      <Select value={sort} onChange={this.handleChange} size="large">
         <Option value="created">Recently starred</Option>
         <Option value="updated">Recently active</Option>
         <Option value="stars">Most stars</Option>

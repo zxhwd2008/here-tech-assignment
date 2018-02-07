@@ -5,7 +5,13 @@ import {
   searchGithubUser,
   searchGithubUserStarredRepos,
 } from 'modules/GithubManager'
+import {
+  Router as RouterState,
+} from 'modules/Router'
 
+const mapStateToProps = state => ({
+  routing: RouterState.locationBeforeTransitions()(state),
+})
 
 const mapDispatchToProps = dispatch => ({
   updateField: (field, value) => dispatch(updateField(field, value)),
@@ -14,6 +20,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export const SearchBarContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SearchBar)

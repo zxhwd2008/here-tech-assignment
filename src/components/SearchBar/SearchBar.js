@@ -17,6 +17,10 @@ export class SearchBar extends React.Component {
   }
 
   render() {
+    const { pathname } = this.props.routing
+    if (pathname !== '/') {
+      return (<div />)
+    }
     return (
       <Search
         placeholder="Search github user"
@@ -30,4 +34,5 @@ SearchBar.propTypes = {
   updateField: PropTypes.func,
   searchGithubUser: PropTypes.func,
   searchGithubUserStarredRepos: PropTypes.func,
+  routing: PropTypes.object,
 }

@@ -60,9 +60,18 @@ function* fetchUserSideEffects(action) {
   }
 }
 
+function* fetchReposSideEffects(action) {
+  const { user, repos } = action.payload
+  const reposData = yield call(fetchGithubData, 'repos/' + user + '/' + repos, true)
+  if (reposData) {
+    yield put(updateField('repository', reposData.response))
+  }
+}
+
 export function* watchGithubRequest() {
   yield all([
     takeEvery(ActionType.GITHUBMANAGER.FETCH_USER, fetchUserSideEffects),
+    takeEvery(ActionType.GITHUBMANAGER.FETCH_REPOSITORY, fetchReposSideEffects),
     takeEvery(ActionType.GITHUBMANAGER.FETCH_USER_STARRED_REPOS, fetchUserStarredSideEffects),
   ])
 }

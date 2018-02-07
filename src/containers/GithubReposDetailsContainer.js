@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  searchGithubRepos: (repos) => dispatch(searchGithubRepos(repos)),
+  searchGithubRepos: (user, repos) => dispatch(searchGithubRepos(user, repos)),
 })
 
 export const GithubReposDetailsContainer = connect(

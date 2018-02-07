@@ -1,6 +1,8 @@
 import React from 'react'
-import { Row, Col, List, Icon } from 'antd'
+import { Row, Col, List } from 'antd'
+import { Link } from 'react-router'
 import PropTypes from 'prop-types'
+import { IconText } from 'components/IconText'
 import { UserCard } from './UserCard'
 import { Filters } from './Filters'
 import styles from './starred-repos-list.less'
@@ -30,13 +32,6 @@ export class StarredReposList extends React.Component {
       },
     }
 
-    const IconText = ({ type, text }) => (
-      <span>
-        <Icon type={type} style={{ marginRight: 8 }} />
-        {text}
-      </span>
-    )
-
     return (
       <Row gutter={24} className={styles['starred-repos-list-wrapper']}>
         <Col xs={24} sm={10} md={8}>
@@ -65,7 +60,7 @@ export class StarredReposList extends React.Component {
                   <IconText type="fork" text={item.forks_count} />]}
               >
                 <List.Item.Meta
-                  title={<a>{item.full_name}</a>}
+                  title={<Link to={'/' + item.full_name}>{item.full_name}</Link>}
                   description={item.description}
                 />
               </List.Item>

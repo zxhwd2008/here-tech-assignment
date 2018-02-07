@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 import { Root } from 'routes/Root'
 import {
   Router as RouterState,
-} from '../modules/Router'
+} from 'modules/Router'
 import {
   Root as RootState,
-} from '../modules/Root'
+} from 'modules/Root'
 
 const mapStateToProps = state => ({
   fetching: RootState.fetching()(state),
