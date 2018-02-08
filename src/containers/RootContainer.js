@@ -8,7 +8,7 @@ import {
 } from 'modules/Root'
 
 const mapStateToProps = state => ({
-  fetching: RootState.fetching()(state),
+  currentTask: RootState.currentTask()(state),
   routing: RouterState.locationBeforeTransitions()(state),
 })
 

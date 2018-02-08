@@ -2,7 +2,7 @@ import keyMirror from 'key-mirror-nested'
 
 export const ActionType = keyMirror({
   ROOT: {
-    UPDATE_FIELD: null,
+    UPDATE_NUMBER_FIELD: null,
   },
   GITHUBMANAGER: {
     FETCH_REPOSITORY: null,

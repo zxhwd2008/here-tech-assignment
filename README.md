@@ -1,6 +1,6 @@
 # Here-Tech-Assignment
 
-## List of lib & Frameworks
+## List of libs & Frameworks
 
 * React
 * Redux
@@ -10,7 +10,7 @@
 * Antd
 * Less
 * Test Runners: Karma
-* Unit Test: Mocha, Chai, Sinon, Enzyme
+* Unit Testing Libs: Mocha, Chai, Sinon, Enzyme
 * Packaging, Build tools, Compiler: Webpack, Babel, npm
 * Linting: ESLint
 
@@ -23,10 +23,6 @@ Download the project to your local environment
 
 ```shell
 npm install --ignore-scripts
-```
-
-```shell
-npm rebuild
 ```
 
 ```shell

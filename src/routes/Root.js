@@ -9,7 +9,7 @@ import styles from './root.less'
 export const Root = (props) =>
   <div>
     <LocaleProvider locale={enUS}>
-      <Spin size="large" spinning={props.fetching} >
+      <Spin size="large" spinning={props.currentTask > 0} >
         <Layout className={classnames('layout', styles.container)}>
           <Layout.Header className={styles['header-wrapper']}>
             <Header />
@@ -29,7 +29,7 @@ export const Root = (props) =>
 
 
 Root.propTypes = {
-  fetching: PropTypes.bool,
+  currentTask: PropTypes.number,
   children: PropTypes.object,
   routing: PropTypes.object,
 }

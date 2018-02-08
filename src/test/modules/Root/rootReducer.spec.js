@@ -1,15 +1,15 @@
 import {
   rootReducer,
-  updateField,
+  updateNumberField,
   } from 'modules/Root'
 import { ActionType } from 'modules/actions'
 import { expect } from 'chai';
 
 describe('rootReducer', () => {
   it('should return action updateField', () => {
-    const action = updateField('field', 'value')
+    const action = updateNumberField('field', 'value')
     expect(action).to.deep.equal({
-      type: ActionType.ROOT.UPDATE_FIELD,
+      type: ActionType.ROOT.UPDATE_NUMBER_FIELD,
       payload: {
         field: 'field',
         value: 'value',
@@ -17,19 +17,19 @@ describe('rootReducer', () => {
     })
   })
 
-  it('should call the reducer and update fetching field', () => {
+  it('should call the reducer and update currentTask field', () => {
     const action = {
-      type: ActionType.ROOT.UPDATE_FIELD,
+      type: ActionType.ROOT.UPDATE_NUMBER_FIELD,
       payload: {
-        field: 'fetching',
-        value: true,
+        field: 'currentTask',
+        value: 1,
       },
     }
 
     const newState = rootReducer(undefined, action).toJS();
 
     expect(newState).to.deep.equal({
-      fetching: true,
+      currentTask: 1,
     })
   })
 })
