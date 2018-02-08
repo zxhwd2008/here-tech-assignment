@@ -56,3 +56,19 @@ npm run build
 node server.prod.js
 ```
 Now you can visit: http://localhost:8080
+
+
+## Potential TODOs
+
+### Requirements
+
+* Integrate app with Github OAuth 2.0
+* Adding more filters (Filter by language, keyword etc.)
+* Parse README.md on the repository details page
+
+### Tech Stack
+
+* Upgrade to Webpack V3
+* Integrate with unit test coverage tools (karma-coverage)
+* Integrate with Reselect to improve React & Redux performance
+* Integrate with document generation tools on build process

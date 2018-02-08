@@ -64,9 +64,7 @@ export class ReposDetails extends React.Component {
           </Col>
           <Col xs={12} sm={5}>
             <IconText type="question-circle" text="Issues" />
-            <span>
-              {repository.open_issues_count}
-            </span>
+            <span> {repository.open_issues_count}</span>
           </Col>
         </Row>
       </div>
