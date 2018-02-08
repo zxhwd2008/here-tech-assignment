@@ -1,6 +1,6 @@
+import { createReducer } from 'modules/utils/reducerUtils'
+import { ActionType } from 'modules/actions'
 import { Root } from './Root'
-import { createReducer } from '../utils/reducerUtils'
-import { ActionType } from '../actions'
 
 export const rootReducer = createReducer(Root.create(), {
   [ActionType.ROOT.UPDATE_FIELD]:

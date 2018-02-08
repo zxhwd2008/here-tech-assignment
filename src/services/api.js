@@ -1,9 +1,7 @@
 import 'isomorphic-fetch'
-import { updateField } from 'modules/Root'
-import { store } from 'index.js'
 import { constants } from './constants'
 
-function callApi(endpoint, data = null, method = 'GET', showSpinner) {
+function callApi(endpoint, data = null, method = 'GET') {
   const fullUrl = (endpoint.indexOf('http://') && endpoint.indexOf('https://') === -1) ? constants.API_ROOT + endpoint : endpoint
   const config = {
     method,
@@ -18,15 +16,8 @@ function callApi(endpoint, data = null, method = 'GET', showSpinner) {
     config.body = JSON.stringify(data)
   }
 
-  if (showSpinner) {
-    store.dispatch(updateField('fetching', true))
-  }
-
   return fetch(fullUrl, config)
-  .then(response => {
-    store.dispatch(updateField('fetching', false))
-    return response.json().then(json => ({ json, response, headers: response.headers }))
-  })
+  .then(response => response.json().then(json => ({ json, response, headers: response.headers })))
   .then(({ json, response, headers }) => (!response.ok ? Promise.reject(json) : { json, headers }))
   .then(
     ({ json, headers }) => ({ response: json, headers }),
@@ -35,14 +26,14 @@ function callApi(endpoint, data = null, method = 'GET', showSpinner) {
 }
 
 // api services
-export const get = (resource, showSpinner = true) =>
-callApi(`/${resource}`, null, 'GET', showSpinner)
+export const get = (resource) =>
+callApi(`/${resource}`, null, 'GET')
 
-export const post = (resource, data, showSpinner = true) =>
-callApi(`/${resource}`, data, 'POST', showSpinner)
+export const post = (resource, data) =>
+callApi(`/${resource}`, data, 'POST')
 
-export const del = (resource, data, showSpinner = true) =>
-callApi(`/${resource}`, data, 'DELETE', showSpinner)
+export const del = (resource, data) =>
+callApi(`/${resource}`, data, 'DELETE')
 
-export const put = (resource, data, showSpinner = true) =>
-callApi(`/${resource}`, data, 'PUT', showSpinner)
+export const put = (resource, data) =>
+callApi(`/${resource}`, data, 'PUT')

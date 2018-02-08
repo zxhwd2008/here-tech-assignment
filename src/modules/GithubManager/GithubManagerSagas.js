@@ -3,6 +3,7 @@ import { message } from 'antd'
 import { Api } from 'services'
 import { parseGithubLink } from 'modules/utils/parseGithubLink'
 import { ActionType } from 'modules/actions'
+import { updateField as updateRootField } from 'modules/Root'
 import { GithubManager, updateField } from './index'
 
 message.config({
@@ -10,7 +11,9 @@ message.config({
 })
 
 function* fetchGithubData(url, showError = false) {
+  yield put(updateRootField('fetching', true))
   const result = yield call(Api.get, url)
+  yield put(updateRootField('fetching', false))
   if (!result.error) {
     return result
   }
