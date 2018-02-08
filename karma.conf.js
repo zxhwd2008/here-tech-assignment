@@ -5,6 +5,7 @@ module.exports = function (config) {
     browsers: [ 'Chrome' ],
     // karma only needs to know about the test bundle
     files: [
+      'node_modules/babel-polyfill/dist/polyfill.js',
       'src/test/tests.bundle.js'
     ],
     frameworks: [ 'chai', 'mocha', 'sinon' ],
@@ -20,7 +21,10 @@ module.exports = function (config) {
     preprocessors: {
       'src/test/tests.bundle.js': [ 'webpack', 'sourcemap' ],
     },
-    reporters: ['dots'],
+    client: {
+      captureConsole: true,
+    },
+    reporters: ['progress'],
     // webpack config object
     webpack: webpackConfig,
     webpackMiddleware: {

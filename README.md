@@ -10,6 +10,7 @@
 * Antd
 * Less
 * Test Runners: Karma
+* Unit Test: Mocha, Chai, Sinon, Enzyme
 * Packaging, Build tools, Compiler: Webpack, Babel, npm
 * Linting: ESLint
 
