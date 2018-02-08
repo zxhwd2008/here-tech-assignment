@@ -1,6 +1,6 @@
 # Here-Tech-Assignment
 
-## List of libs & Frameworks
+## List of Libs & Frameworks
 
 * React
 * Redux
@@ -61,6 +61,7 @@ Now you can visit: http://localhost:8080
 * Integrate app with Github OAuth 2.0
 * Adding more filters (Filter by language, keyword etc.)
 * Parse README.md on the repository details page
+* 100% covered unit test
 
 ### Tech Stack
 
