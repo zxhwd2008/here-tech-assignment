@@ -1,5 +1,11 @@
 # Here-Tech-Assignment
 
+## Description
+* Display user profile && user starred repositories by searching Github username
+* Filter starred repositories by 'Created', 'Updated' and 'Number of stars'
+* Pagination support for starred repositories
+* Details page for every starred repository
+
 ## List of Libs & Frameworks
 
 * React
