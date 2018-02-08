@@ -2,8 +2,8 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
-// import { Header } from 'components/Header'
-import { SearchBar } from 'components/SearchBar'
+import { Header } from 'components/Header'
+// import { SearchBar } from 'components/SearchBar'
 //
 // const wrapper = mount(<Header />)
 //
