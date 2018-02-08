@@ -10,7 +10,7 @@ message.config({
   duration: 1,
 })
 
-function* fetchGithubData(url, showError = false) {
+export function* fetchGithubData(url, showError = false) {
   yield put(updateRootNumberField('currentTask', 1))
   const result = yield call(Api.get, url)
   yield put(updateRootNumberField('currentTask', -1))
@@ -23,7 +23,7 @@ function* fetchGithubData(url, showError = false) {
   return false
 }
 
-function* fetchUserStarredSideEffects(action) {
+export function* fetchUserStarredSideEffects(action) {
   const { user } = action.payload
 
   const page = yield select(state =>
@@ -59,7 +59,7 @@ function* fetchUserStarredSideEffects(action) {
   }
 }
 
-function* fetchUserSideEffects(action) {
+export function* fetchUserSideEffects(action) {
   const { user } = action.payload
   const userData = yield call(fetchGithubData, 'users/' + user, true)
   if (userData) {
@@ -67,7 +67,7 @@ function* fetchUserSideEffects(action) {
   }
 }
 
-function* fetchReposSideEffects(action) {
+export function* fetchReposSideEffects(action) {
   const { user, repos } = action.payload
   const reposData = yield call(fetchGithubData, 'repos/' + user + '/' + repos, true)
   if (reposData) {

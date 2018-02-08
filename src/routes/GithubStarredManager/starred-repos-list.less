@@ -8,5 +8,19 @@
 
   .filters-wrapper {
     padding: 0 0 16px 0;
+
+    :global {
+      .ant-select-lg {
+        width: 170px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .starred-repos-list-wrapper {
+    .filters-wrapper {
+      padding: 16px 0 16px 0;
+    }
   }
 }
